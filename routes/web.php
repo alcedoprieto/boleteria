@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+Route::resource('eventos', 'EventoController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('valorboletos', 'valorboletoController');
