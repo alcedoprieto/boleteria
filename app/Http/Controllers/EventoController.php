@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateEventoRequest;
-use App\Http\Requests\UpdateEventoRequest;
-use App\Repositories\EventoRepository;
+use App\Http\Requests\CreateeventoRequest;
+use App\Http\Requests\UpdateeventoRequest;
+use App\Repositories\eventoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class EventoController extends AppBaseController
+class eventoController extends AppBaseController
 {
-    /** @var  EventoRepository */
+    /** @var  eventoRepository */
     private $eventoRepository;
 
-    public function __construct(EventoRepository $eventoRepo)
+    public function __construct(eventoRepository $eventoRepo)
     {
         $this->eventoRepository = $eventoRepo;
     }
 
     /**
-     * Display a listing of the Evento.
+     * Display a listing of the evento.
      *
      * @param Request $request
      * @return Response
@@ -37,7 +37,7 @@ class EventoController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new Evento.
+     * Show the form for creating a new evento.
      *
      * @return Response
      */
@@ -47,13 +47,13 @@ class EventoController extends AppBaseController
     }
 
     /**
-     * Store a newly created Evento in storage.
+     * Store a newly created evento in storage.
      *
-     * @param CreateEventoRequest $request
+     * @param CreateeventoRequest $request
      *
      * @return Response
      */
-    public function store(CreateEventoRequest $request)
+    public function store(CreateeventoRequest $request)
     {
         $input = $request->all();
 
@@ -65,7 +65,7 @@ class EventoController extends AppBaseController
     }
 
     /**
-     * Display the specified Evento.
+     * Display the specified evento.
      *
      * @param  int $id
      *
@@ -85,7 +85,7 @@ class EventoController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified Evento.
+     * Show the form for editing the specified evento.
      *
      * @param  int $id
      *
@@ -105,14 +105,14 @@ class EventoController extends AppBaseController
     }
 
     /**
-     * Update the specified Evento in storage.
+     * Update the specified evento in storage.
      *
      * @param  int              $id
-     * @param UpdateEventoRequest $request
+     * @param UpdateeventoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateEventoRequest $request)
+    public function update($id, UpdateeventoRequest $request)
     {
         $evento = $this->eventoRepository->findWithoutFail($id);
 
@@ -130,7 +130,7 @@ class EventoController extends AppBaseController
     }
 
     /**
-     * Remove the specified Evento from storage.
+     * Remove the specified evento from storage.
      *
      * @param  int $id
      *

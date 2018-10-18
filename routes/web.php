@@ -18,10 +18,14 @@ Route::get('/', function () {
 
 
 
-Route::resource('eventos', 'EventoController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('valorboletos', 'valorboletoController');
+
+Route::resource('eventos', 'eventoController');
+
+Route::resource('boletos', 'boletoController');

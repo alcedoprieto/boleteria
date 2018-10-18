@@ -6,18 +6,17 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Evento
+ * Class evento
  * @package App\Models
- * @version October 17, 2018, 5:06 pm UTC
+ * @version October 18, 2018, 2:19 am UTC
  *
  * @property string nombre
  * @property string descripcion
  * @property string email
  * @property string logo
  * @property date fecha
- * @property time hora
  */
-class Evento extends Model
+class evento extends Model
 {
     use SoftDeletes;
 
@@ -32,8 +31,7 @@ class Evento extends Model
         'descripcion',
         'email',
         'logo',
-        'fecha',
-        'hora'
+        'fecha'
     ];
 
     /**
@@ -56,8 +54,7 @@ class Evento extends Model
      */
     public static $rules = [
         'nombre' => 'required',
-        'email' => 'email',
-        'fecha' => 'required'
+        'email' => 'email'
     ];
 
     

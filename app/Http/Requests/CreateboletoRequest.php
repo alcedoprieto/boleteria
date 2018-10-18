@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\evento;
+use App\Models\boleto;
 
-class CreateeventoRequest extends FormRequest
+class CreateboletoRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class CreateeventoRequest extends FormRequest
      */
     public function rules()
     {
-        return evento::$rules;
+        return boleto::$rules;
     }
 }

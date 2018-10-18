@@ -6,7 +6,6 @@
         <th>Email</th>
         <th>Logo</th>
         <th>Fecha</th>
-        <th>Hora</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
@@ -18,7 +17,6 @@
             <td>{!! $evento->email !!}</td>
             <td>{!! $evento->logo !!}</td>
             <td>{!! $evento->fecha !!}</td>
-            <td>{!! $evento->hora !!}</td>
             <td>
                 {!! Form::open(['route' => ['eventos.destroy', $evento->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

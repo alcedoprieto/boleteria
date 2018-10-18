@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEventosTable extends Migration
+class CreateeventosTable extends Migration
 {
 
     /**
@@ -20,7 +20,6 @@ class CreateEventosTable extends Migration
             $table->string('email',250);
             $table->string('logo',250);
             $table->date('fecha');
-            $table->time('hora');
             $table->timestamps();
             $table->softDeletes();
         });

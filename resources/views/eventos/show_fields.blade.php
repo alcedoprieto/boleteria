@@ -34,12 +34,6 @@
     <p>{!! $evento->fecha !!}</p>
 </div>
 
-<!-- Hora Field -->
-<div class="form-group">
-    {!! Form::label('hora', 'Hora:') !!}
-    <p>{!! $evento->hora !!}</p>
-</div>
-
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
