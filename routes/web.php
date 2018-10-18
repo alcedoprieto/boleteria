@@ -24,8 +24,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::resource('valorboletos', 'valorboletoController');
+Route::resource('valorboletos', 'valorboletoController')->middleware('auth');
 
-Route::resource('eventos', 'eventoController');
+Route::resource('eventos', 'eventoController')->middleware('auth', 'role:admin');
 
-Route::resource('boletos', 'boletoController');
+Route::resource('boletos', 'boletoController')->middleware('auth');
