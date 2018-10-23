@@ -16,3 +16,4 @@
         <a href="#"><i class="fa fa-edit"></i><span>Comprar Entrada</span></a>
     </li>
 @endif
+

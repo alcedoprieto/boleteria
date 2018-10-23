@@ -10,10 +10,46 @@
     <p>{!! $evento->nombre !!}</p>
 </div>
 
+<!-- Logo Field -->
+<div class="form-group">
+    {!! Form::label('logo', 'Logo:') !!}
+    <p>{!! $evento->logo !!}</p>
+</div>
+
+<!-- Lugar Field -->
+<div class="form-group">
+    {!! Form::label('lugar', 'Lugar:') !!}
+    <p>{!! $evento->lugar !!}</p>
+</div>
+
 <!-- Descripcion Field -->
 <div class="form-group">
     {!! Form::label('descripcion', 'Descripcion:') !!}
     <p>{!! $evento->descripcion !!}</p>
+</div>
+
+<!-- Website Field -->
+<div class="form-group">
+    {!! Form::label('website', 'Website:') !!}
+    <p>{!! $evento->website !!}</p>
+</div>
+
+<!-- Fecha Field -->
+<div class="form-group">
+    {!! Form::label('fecha', 'Fecha:') !!}
+    <p>{!! $evento->fecha !!}</p>
+</div>
+
+<!-- Hora Field -->
+<div class="form-group">
+    {!! Form::label('hora', 'Hora:') !!}
+    <p>{!! $evento->hora !!}</p>
+</div>
+
+<!-- Mobile Field -->
+<div class="form-group">
+    {!! Form::label('mobile', 'Mobile:') !!}
+    <p>{!! $evento->mobile !!}</p>
 </div>
 
 <!-- Email Field -->
@@ -22,16 +58,28 @@
     <p>{!! $evento->email !!}</p>
 </div>
 
-<!-- Logo Field -->
+<!-- Latitud Field -->
 <div class="form-group">
-    {!! Form::label('logo', 'Logo:') !!}
-    <p>{!! $evento->logo !!}</p>
+    {!! Form::label('latitud', 'Latitud:') !!}
+    <p>{!! $evento->latitud !!}</p>
 </div>
 
-<!-- Fecha Field -->
+<!-- Longitud Field -->
 <div class="form-group">
-    {!! Form::label('fecha', 'Fecha:') !!}
-    <p>{!! $evento->fecha !!}</p>
+    {!! Form::label('longitud', 'Longitud:') !!}
+    <p>{!! $evento->longitud !!}</p>
+</div>
+
+<!-- Ciudad Field -->
+<div class="form-group">
+    {!! Form::label('ciudad', 'Ciudad:') !!}
+    <p>{!! $evento->ciudad !!}</p>
+</div>
+
+<!-- Poster Field -->
+<div class="form-group">
+    {!! Form::label('poster', 'Poster:') !!}
+    <p>{!! $evento->poster !!}</p>
 </div>
 
 <!-- Created At Field -->

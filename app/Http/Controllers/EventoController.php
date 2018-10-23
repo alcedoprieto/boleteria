@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateeventoRequest;
-use App\Http\Requests\UpdateeventoRequest;
-use App\Repositories\eventoRepository;
+use App\Http\Requests\CreateEventoRequest;
+use App\Http\Requests\UpdateEventoRequest;
+use App\Repositories\EventoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Facades\Storage;
 
-class eventoController extends AppBaseController
+class EventoController extends AppBaseController
 {
-    /** @var  eventoRepository */
+    /** @var  EventoRepository */
     private $eventoRepository;
 
-    public function __construct(eventoRepository $eventoRepo)
+    public function __construct(EventoRepository $eventoRepo)
     {
         $this->eventoRepository = $eventoRepo;
     }
 
     /**
-     * Display a listing of the evento.
+     * Display a listing of the Evento.
      *
      * @param Request $request
      * @return Response
@@ -37,7 +38,7 @@ class eventoController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new evento.
+     * Show the form for creating a new Evento.
      *
      * @return Response
      */
@@ -47,17 +48,31 @@ class eventoController extends AppBaseController
     }
 
     /**
-     * Store a newly created evento in storage.
+     * Store a newly created Evento in storage.
      *
-     * @param CreateeventoRequest $request
+     * @param CreateEventoRequest $request
      *
      * @return Response
      */
-    public function store(CreateeventoRequest $request)
+    public function store(CreateEventoRequest $request)
     {
         $input = $request->all();
 
         $evento = $this->eventoRepository->create($input);
+        
+        if ($request->file('logo')){
+            $nombre = "img/".$evento->id."/logo";
+            $file = $request->file('logo');
+            $path = Storage::disk('public')->putFileAs($nombre, $file, $file->getClientOriginalName());
+            $evento->update(['logo' => $path]);
+        }
+
+        if ($request->file('poster')){
+            $nombre = "img/".$evento->id."/poster";
+            $file = $request->file('poster');
+            $path = Storage::disk('public')->putFileAs($nombre, $file, $file->getClientOriginalName());
+            $evento->update(['poster' => $path]);
+        }
 
         Flash::success('Evento saved successfully.');
 
@@ -65,7 +80,7 @@ class eventoController extends AppBaseController
     }
 
     /**
-     * Display the specified evento.
+     * Display the specified Evento.
      *
      * @param  int $id
      *
@@ -85,7 +100,7 @@ class eventoController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified evento.
+     * Show the form for editing the specified Evento.
      *
      * @param  int $id
      *
@@ -105,14 +120,14 @@ class eventoController extends AppBaseController
     }
 
     /**
-     * Update the specified evento in storage.
+     * Update the specified Evento in storage.
      *
      * @param  int              $id
-     * @param UpdateeventoRequest $request
+     * @param UpdateEventoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateeventoRequest $request)
+    public function update($id, UpdateEventoRequest $request)
     {
         $evento = $this->eventoRepository->findWithoutFail($id);
 
@@ -130,7 +145,7 @@ class eventoController extends AppBaseController
     }
 
     /**
-     * Remove the specified evento from storage.
+     * Remove the specified Evento from storage.
      *
      * @param  int $id
      *

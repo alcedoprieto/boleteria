@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'eventos.store']) !!}
+                    {!! Form::open(['route' => 'eventos.store', 'enctype' => 'multipart/form-data']) !!}
 
                         @include('eventos.fields')
 
@@ -21,4 +21,5 @@
             </div>
         </div>
     </div>
+    
 @endsection

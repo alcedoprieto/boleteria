@@ -6,17 +6,25 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class evento
+ * Class Evento
  * @package App\Models
- * @version October 18, 2018, 2:19 am UTC
+ * @version October 23, 2018, 4:01 pm UTC
  *
  * @property string nombre
- * @property string descripcion
- * @property string email
  * @property string logo
+ * @property string lugar
+ * @property string descripcion
+ * @property string website
  * @property date fecha
+ * @property string hora
+ * @property string mobile
+ * @property string email
+ * @property string latitud
+ * @property string longitud
+ * @property string ciudad
+ * @property string poster
  */
-class evento extends Model
+class Evento extends Model
 {
     use SoftDeletes;
 
@@ -28,10 +36,18 @@ class evento extends Model
 
     public $fillable = [
         'nombre',
-        'descripcion',
-        'email',
         'logo',
-        'fecha'
+        'lugar',
+        'descripcion',
+        'website',
+        'fecha',
+        'hora',
+        'mobile',
+        'email',
+        'latitud',
+        'longitud',
+        'ciudad',
+        'poster'
     ];
 
     /**
@@ -41,10 +57,18 @@ class evento extends Model
      */
     protected $casts = [
         'nombre' => 'string',
-        'descripcion' => 'string',
-        'email' => 'string',
         'logo' => 'string',
-        'fecha' => 'date'
+        'lugar' => 'string',
+        'descripcion' => 'string',
+        'website' => 'string',
+        'fecha' => 'date',
+        'hora' => 'string',
+        'mobile' => 'string',
+        'email' => 'string',
+        'latitud' => 'string',
+        'longitud' => 'string',
+        'ciudad' => 'string',
+        'poster' => 'string'
     ];
 
     /**
@@ -54,7 +78,13 @@ class evento extends Model
      */
     public static $rules = [
         'nombre' => 'required',
-        'email' => 'email'
+        'lugar' => 'required',
+        'fecha' => 'required',
+        'mobile' => 'numeric',
+        'email' => 'email',
+        'latitud' => 'numeric',
+        'longitud' => 'numeric',
+        'ciudad' => 'required'
     ];
 
     

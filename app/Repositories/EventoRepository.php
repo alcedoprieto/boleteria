@@ -2,29 +2,37 @@
 
 namespace App\Repositories;
 
-use App\Models\evento;
+use App\Models\Evento;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class eventoRepository
+ * Class EventoRepository
  * @package App\Repositories
- * @version October 18, 2018, 2:19 am UTC
+ * @version October 23, 2018, 4:01 pm UTC
  *
- * @method evento findWithoutFail($id, $columns = ['*'])
- * @method evento find($id, $columns = ['*'])
- * @method evento first($columns = ['*'])
+ * @method Evento findWithoutFail($id, $columns = ['*'])
+ * @method Evento find($id, $columns = ['*'])
+ * @method Evento first($columns = ['*'])
 */
-class eventoRepository extends BaseRepository
+class EventoRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'nombre',
-        'descripcion',
-        'email',
         'logo',
-        'fecha'
+        'lugar',
+        'descripcion',
+        'website',
+        'fecha',
+        'hora',
+        'mobile',
+        'email',
+        'latitud',
+        'longitud',
+        'ciudad',
+        'poster'
     ];
 
     /**
@@ -32,6 +40,6 @@ class eventoRepository extends BaseRepository
      **/
     public function model()
     {
-        return evento::class;
+        return Evento::class;
     }
 }

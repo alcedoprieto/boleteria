@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\evento;
+use App\Models\Evento;
 
-class UpdateeventoRequest extends FormRequest
+class UpdateEventoRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class UpdateeventoRequest extends FormRequest
      */
     public function rules()
     {
-        return evento::$rules;
+        return Evento::$rules;
     }
 }

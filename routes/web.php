@@ -29,3 +29,5 @@ Route::resource('valorboletos', 'valorboletoController')->middleware('auth');
 Route::resource('eventos', 'eventoController')->middleware('auth', 'role:admin');
 
 Route::resource('boletos', 'boletoController')->middleware('auth');
+
+Route::resource('eventos', 'EventoController');
