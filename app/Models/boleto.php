@@ -6,17 +6,20 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class boleto
+ * Class Boleto
  * @package App\Models
- * @version October 18, 2018, 2:27 am UTC
+ * @version October 26, 2018, 3:06 am UTC
  *
  * @property string codigo
- * @property integer idvalor
- * @property boolean activo
+ * @property float valor
+ * @property float iva
+ * @property date inicio
+ * @property date fin
  * @property integer idevento
  * @property integer iduser
+ * @property boolean activo
  */
-class boleto extends Model
+class Boleto extends Model
 {
     use SoftDeletes;
 
@@ -28,10 +31,13 @@ class boleto extends Model
 
     public $fillable = [
         'codigo',
-        'idvalor',
-        'activo',
+        'valor',
+        'iva',
+        'inicio',
+        'fin',
         'idevento',
-        'iduser'
+        'iduser',
+        'activo'
     ];
 
     /**
@@ -41,10 +47,13 @@ class boleto extends Model
      */
     protected $casts = [
         'codigo' => 'string',
-        'idvalor' => 'integer',
-        'activo' => 'boolean',
+        'valor' => 'float',
+        'iva' => 'float',
+        'inicio' => 'date',
+        'fin' => 'date',
         'idevento' => 'integer',
-        'iduser' => 'integer'
+        'iduser' => 'integer',
+        'activo' => 'boolean'
     ];
 
     /**
@@ -54,7 +63,8 @@ class boleto extends Model
      */
     public static $rules = [
         'codigo' => 'required',
-        'idvalor' => 'required',
+        'valor' => 'required, numeric',
+        'iva' => 'numeric',
         'idevento' => 'required'
     ];
 

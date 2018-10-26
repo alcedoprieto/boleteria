@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateboletosTable extends Migration
+class CreateBoletosTable extends Migration
 {
 
     /**
@@ -15,14 +15,16 @@ class CreateboletosTable extends Migration
     {
         Schema::create('boletos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo',150);
-            $table->boolean('activo');
-            $table->integer('idvalor')->unsigned();
+            $table->string('codigo',30);
+            $table->float('valor');
+            $table->float('iva');
+            $table->date('inicio')->nullable();
+            $table->date('fin')->nullable();
             $table->integer('idevento')->unsigned();
-            $table->integer('iduser')->unsigned();
+            $table->integer('iduser')->unsigned()->nullable();
+            $table->boolean('activo');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('idvalor')->references('id')->on('valorboletos');
             $table->foreign('idevento')->references('id')->on('eventos');
             $table->foreign('iduser')->references('id')->on('users');
         });

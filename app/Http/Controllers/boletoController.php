@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateboletoRequest;
-use App\Http\Requests\UpdateboletoRequest;
-use App\Repositories\boletoRepository;
+use App\Http\Requests\CreateBoletoRequest;
+use App\Http\Requests\UpdateBoletoRequest;
+use App\Repositories\BoletoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Facades\DB;
 
-class boletoController extends AppBaseController
+class BoletoController extends AppBaseController
 {
-    /** @var  boletoRepository */
+    /** @var  BoletoRepository */
     private $boletoRepository;
 
-    public function __construct(boletoRepository $boletoRepo)
+    public function __construct(BoletoRepository $boletoRepo)
     {
         $this->boletoRepository = $boletoRepo;
     }
 
     /**
-     * Display a listing of the boleto.
+     * Display a listing of the Boleto.
      *
      * @param Request $request
      * @return Response
@@ -37,23 +38,24 @@ class boletoController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new boleto.
+     * Show the form for creating a new Boleto.
      *
      * @return Response
      */
     public function create()
     {
-        return view('boletos.create');
+        $eventos = DB::table('eventos')->pluck('nombre','id');
+        return view('boletos.create',['eventos' => $eventos]);
     }
 
     /**
-     * Store a newly created boleto in storage.
+     * Store a newly created Boleto in storage.
      *
-     * @param CreateboletoRequest $request
+     * @param CreateBoletoRequest $request
      *
      * @return Response
      */
-    public function store(CreateboletoRequest $request)
+    public function store(CreateBoletoRequest $request)
     {
         $input = $request->all();
 
@@ -65,7 +67,7 @@ class boletoController extends AppBaseController
     }
 
     /**
-     * Display the specified boleto.
+     * Display the specified Boleto.
      *
      * @param  int $id
      *
@@ -85,7 +87,7 @@ class boletoController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified boleto.
+     * Show the form for editing the specified Boleto.
      *
      * @param  int $id
      *
@@ -105,14 +107,14 @@ class boletoController extends AppBaseController
     }
 
     /**
-     * Update the specified boleto in storage.
+     * Update the specified Boleto in storage.
      *
      * @param  int              $id
-     * @param UpdateboletoRequest $request
+     * @param UpdateBoletoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateboletoRequest $request)
+    public function update($id, UpdateBoletoRequest $request)
     {
         $boleto = $this->boletoRepository->findWithoutFail($id);
 
@@ -130,7 +132,7 @@ class boletoController extends AppBaseController
     }
 
     /**
-     * Remove the specified boleto from storage.
+     * Remove the specified Boleto from storage.
      *
      * @param  int $id
      *

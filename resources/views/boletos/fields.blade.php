@@ -4,6 +4,33 @@
     {!! Form::text('codigo', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Valor Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('valor', 'Valor:') !!}
+    {!! Form::number('valor', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Iva Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('iva', 'Iva:') !!}
+    {!! Form::number('iva', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Inicio Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('inicio', 'Inicio:') !!}
+    {!! Form::date('inicio', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Fin Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('fin', 'Fin:') !!}
+    {!! Form::date('fin', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group col-sm-6"> 
+    {!! Form::label('evento', 'Evento:') !!}
+    {!! Form::select('size', $eventos, ['class' => 'form-control']) !!}
+</div>
 <!-- Activo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('activo', 'Activo:') !!}

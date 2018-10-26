@@ -10,16 +10,28 @@
     <p>{!! $boleto->codigo !!}</p>
 </div>
 
-<!-- Idvalor Field -->
+<!-- Valor Field -->
 <div class="form-group">
-    {!! Form::label('idvalor', 'Idvalor:') !!}
-    <p>{!! $boleto->idvalor !!}</p>
+    {!! Form::label('valor', 'Valor:') !!}
+    <p>{!! $boleto->valor !!}</p>
 </div>
 
-<!-- Activo Field -->
+<!-- Iva Field -->
 <div class="form-group">
-    {!! Form::label('activo', 'Activo:') !!}
-    <p>{!! $boleto->activo !!}</p>
+    {!! Form::label('iva', 'Iva:') !!}
+    <p>{!! $boleto->iva !!}</p>
+</div>
+
+<!-- Inicio Field -->
+<div class="form-group">
+    {!! Form::label('inicio', 'Inicio:') !!}
+    <p>{!! $boleto->inicio !!}</p>
+</div>
+
+<!-- Fin Field -->
+<div class="form-group">
+    {!! Form::label('fin', 'Fin:') !!}
+    <p>{!! $boleto->fin !!}</p>
 </div>
 
 <!-- Idevento Field -->
@@ -32,6 +44,12 @@
 <div class="form-group">
     {!! Form::label('iduser', 'Iduser:') !!}
     <p>{!! $boleto->iduser !!}</p>
+</div>
+
+<!-- Activo Field -->
+<div class="form-group">
+    {!! Form::label('activo', 'Activo:') !!}
+    <p>{!! $boleto->activo !!}</p>
 </div>
 
 <!-- Created At Field -->

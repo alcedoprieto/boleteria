@@ -28,6 +28,22 @@ Route::resource('valorboletos', 'valorboletoController')->middleware('auth');
 
 Route::resource('eventos', 'eventoController')->middleware('auth', 'role:admin');
 
-Route::resource('boletos', 'boletoController')->middleware('auth');
+/*Route::resource('boletos', 'boletoController')->middleware('auth');
+//Route::resource('eventos.boletos', 'boletoController',[ 'only'=>['show','edit','create']])->middleware('auth', 'role:admin');
+//Route::resource('eventos.boletos','boletoController',[ 'only'=>['index','show'] ]);
 
-Route::resource('eventos', 'EventoController');
+//Route::resource('eventos', 'EventoController');
+
+Route::get('eventos/{evento}/boletos/create', [
+    'as'=>'eventos.boletos.create',
+    'uses' => 'boletoController@create'
+]);
+
+Route::post('eventos/boletos', [
+    'as'=>'eventos.boletos.store',
+    'uses' => 'boletoController@store'
+]);*/
+
+
+
+Route::resource('boletos', 'BoletoController')->middleware('auth', 'role:admin');

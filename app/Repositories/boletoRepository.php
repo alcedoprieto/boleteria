@@ -2,29 +2,32 @@
 
 namespace App\Repositories;
 
-use App\Models\boleto;
+use App\Models\Boleto;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class boletoRepository
+ * Class BoletoRepository
  * @package App\Repositories
- * @version October 18, 2018, 2:27 am UTC
+ * @version October 26, 2018, 3:06 am UTC
  *
- * @method boleto findWithoutFail($id, $columns = ['*'])
- * @method boleto find($id, $columns = ['*'])
- * @method boleto first($columns = ['*'])
+ * @method Boleto findWithoutFail($id, $columns = ['*'])
+ * @method Boleto find($id, $columns = ['*'])
+ * @method Boleto first($columns = ['*'])
 */
-class boletoRepository extends BaseRepository
+class BoletoRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'codigo',
-        'idvalor',
-        'activo',
+        'valor',
+        'iva',
+        'inicio',
+        'fin',
         'idevento',
-        'iduser'
+        'iduser',
+        'activo'
     ];
 
     /**
@@ -32,6 +35,6 @@ class boletoRepository extends BaseRepository
      **/
     public function model()
     {
-        return boleto::class;
+        return Boleto::class;
     }
 }

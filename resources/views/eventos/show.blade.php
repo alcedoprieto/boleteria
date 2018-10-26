@@ -12,6 +12,7 @@
                 <div class="row" style="padding-left: 20px">
                     @include('eventos.show_fields')
                     <a href="{!! route('eventos.index') !!}" class="btn btn-default">Back</a>
+                    <a href="{{action('boletoController@create', $evento->id)}}" class="btn btn-default">Agregar Boletos</a>
                 </div>
             </div>
         </div>

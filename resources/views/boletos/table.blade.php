@@ -2,10 +2,13 @@
     <thead>
         <tr>
             <th>Codigo</th>
-        <th>Idvalor</th>
-        <th>Activo</th>
+        <th>Valor</th>
+        <th>Iva</th>
+        <th>Inicio</th>
+        <th>Fin</th>
         <th>Idevento</th>
         <th>Iduser</th>
+        <th>Activo</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
@@ -13,10 +16,13 @@
     @foreach($boletos as $boleto)
         <tr>
             <td>{!! $boleto->codigo !!}</td>
-            <td>{!! $boleto->idvalor !!}</td>
-            <td>{!! $boleto->activo !!}</td>
+            <td>{!! $boleto->valor !!}</td>
+            <td>{!! $boleto->iva !!}</td>
+            <td>{!! $boleto->inicio !!}</td>
+            <td>{!! $boleto->fin !!}</td>
             <td>{!! $boleto->idevento !!}</td>
             <td>{!! $boleto->iduser !!}</td>
+            <td>{!! $boleto->activo !!}</td>
             <td>
                 {!! Form::open(['route' => ['boletos.destroy', $boleto->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

@@ -35,6 +35,7 @@ class Evento extends Model
 
 
     public $fillable = [
+        'id',
         'nombre',
         'logo',
         'lugar',
