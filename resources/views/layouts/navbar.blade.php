@@ -1,6 +1,10 @@
     <nav role="navigation">
         <div>
-            <ul>
+            <ul> 
+                @auth
+            @include('layouts.infoUser')
+            @endauth
+            @include('layouts.menuAdmin')
                 <!-- User Account Menu -->
                 @guest
                 <li >
@@ -16,14 +20,12 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span>{!! Auth::user()->name !!}</span>
                     </a>
                     <ul >
                         <!-- The user image in the menu -->
                         <li >
-                            <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" alt="User Image"/>
                             <p>
                                 {!! Auth::user()->name !!}
                                 <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>
