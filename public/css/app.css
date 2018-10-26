@@ -1,17 +1,3 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
- /* Estilos Frequenza */
-
- .soon {
-    background-image: url("../img/img1.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    height: 1200px;
-    width: 100%; 
-  }
-  .logoEvento{
-    max-width: 100px;
-  }
-
-  .posterEvento{
-    max-width: 100px;
-  }
+/*# sourceMappingURL=app.css.map */
