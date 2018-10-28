@@ -7,7 +7,7 @@
         <th>Inicio</th>
         <th>Fin</th>
         <th>Idevento</th>
-        <th>Iduser</th>
+        <th>Cantidad</th>
         <th>Activo</th>
             <th colspan="3">Action</th>
         </tr>
@@ -21,7 +21,7 @@
             <td>{!! $boleto->inicio !!}</td>
             <td>{!! $boleto->fin !!}</td>
             <td>{!! $boleto->idevento !!}</td>
-            <td>{!! $boleto->iduser !!}</td>
+            <td>{!! $boleto->cantidad !!}</td>
             <td>{!! $boleto->activo !!}</td>
             <td>
                 {!! Form::open(['route' => ['boletos.destroy', $boleto->id], 'method' => 'delete']) !!}

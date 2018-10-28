@@ -37,7 +37,8 @@ class Boleto extends Model
         'fin',
         'idevento',
         'iduser',
-        'activo'
+        'activo',
+        'cantidad'
     ];
 
     /**
@@ -53,7 +54,8 @@ class Boleto extends Model
         'fin' => 'date',
         'idevento' => 'integer',
         'iduser' => 'integer',
-        'activo' => 'boolean'
+        'activo' => 'boolean',
+        'cantidad' => 'integer'
     ];
 
     /**
@@ -63,10 +65,15 @@ class Boleto extends Model
      */
     public static $rules = [
         'codigo' => 'required',
-        'valor' => 'required, numeric',
+        'valor' => 'required', 'numeric',
         'iva' => 'numeric',
-        'idevento' => 'required'
+        'idevento' => 'required',
+        'cantidad' => 'required', 'numeric'
     ];
 
+    public function users()
+        {
+            return $this->belongsToMany('App\User');
+        }
     
 }

@@ -35,6 +35,11 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function boletos()
+    {
+        return $this->belongsToMany('App\Models\Boleto');
+    }
+
     public function authorizeRoles($roles)
         {
             if ($this->hasAnyRole($roles)) {

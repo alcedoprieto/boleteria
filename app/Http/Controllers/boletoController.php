@@ -11,6 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Illuminate\Support\Facades\DB;
+use App\BoletoUser;
 
 class BoletoController extends AppBaseController
 {
@@ -58,8 +59,20 @@ class BoletoController extends AppBaseController
     public function store(CreateBoletoRequest $request)
     {
         $input = $request->all();
-
+        if ($input["activo"] != 1) $input["activo"] = 0;
+  
         $boleto = $this->boletoRepository->create($input);
+
+        $cant = $boleto->cantidad;
+ 
+        for ($i = 1; $i <= $cant; $i++){
+            BoletoUser::create([
+                'codigo' => $boleto->codigo.$i,
+                'idboleto' => $boleto->id
+            ]);
+            
+        }
+
 
         Flash::success('Boleto saved successfully.');
 
