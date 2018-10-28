@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Boleto;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,11 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['user', 'admin']);
-        return view('home');
+
+        $boletos = DB::table('boletos')->join('eventos', 'boletos.idevento', '=', 'eventos.id')->whereDate('inicio', '<=', now()->format('Y-m-d'))->whereDate('fin', '>=', now()->format('Y-m-d'))->where('activo','1')->get();
+
+
+        return view('home', ['boletos' => $boletos]);
+
     }
 }

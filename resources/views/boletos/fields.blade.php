@@ -13,7 +13,8 @@
 <!-- Iva Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('iva', 'Iva:') !!}
-    {!! Form::number('iva', null, ['class' => 'form-control', 'min' => '0', 'step' => '0.01']) !!}
+    {!! Form::hidden('iva', false) !!}
+    {!! Form::checkbox('iva', '1', '0') !!} 
 </div>
 
 <!-- Inicio Field -->
@@ -36,7 +37,7 @@
     {!! Form::label('activo', 'Activo:') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('activo', false) !!}
-        {!! Form::checkbox('activo', '1', '0') !!} 1
+        {!! Form::checkbox('activo', '1', '0') !!} 
     </label>
 </div>
 <!-- Valor Field -->

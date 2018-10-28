@@ -60,6 +60,8 @@ class BoletoController extends AppBaseController
     {
         $input = $request->all();
         if ($input["activo"] != 1) $input["activo"] = 0;
+
+        if ($input["iva"] == 1) { $input["iva"] = $input["valor"] * 0.12; } else { $input["iva"] = 0; }
   
         $boleto = $this->boletoRepository->create($input);
 
