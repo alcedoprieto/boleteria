@@ -1,9 +1,16 @@
-// Typography
+
+
 @mixin Bfont{
 font-family: 'Hind', sans-serif;
 font-size: 0.9rem;
 line-height: 1.6;
 }
-// Colors
-$blue: #0E3757;
-$cream: #E9F0E5;
+
+
+@mixin clearfix{
+	&:after{
+		content: "";
+		display: table;
+		clear:both;
+	}
+}

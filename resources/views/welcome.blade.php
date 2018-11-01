@@ -19,19 +19,41 @@
     <body>
         <!-- Main Header -->
         <header>
-            <!-- Logo -->
-            <a href="{{ route('home') }}" class="logo">
-                <b>Frequenza</b>
-            </a>
             @include('layouts.navbar')
         </header>
         <!-- Cuerpo -->
-        <div class="content">
-        <main class="soon"></main>
-    </div>
+        <div class="row">
+            <div class="col-1-of-2">col1 of 2</div>
+            <div class="col-1-of-2">col1 of 2</div>
+        </div>
+        <div class="row">
+            <div class="col-1-of-3">col1 of 3</div>
+            <div class="col-1-of-3">col1 of 3</div>
+            <div class="col-1-of-3">col1 of 3</div>
+        </div>
+         <div class="row">
+            <div class="col-1-of-3">col1 of 3</div>
+            <div class="col-2-of-3">col2 of 3</div>
+        </div>
+
+        <div class="row">
+            <div class="col-1-of-4">col1 of 4</div>
+            <div class="col-1-of-4">col1 of 4</div>
+            <div class="col-1-of-4">col1 of 4</div>
+            <div class="col-1-of-4">col1 of 4</div>
+        </div>
+        <div class="row">
+            <div class="col-1-of-4">col1 of 4</div>
+            <div class="col-2-of-4">col2 of 4</div>
+            <div class="col-1-of-4">col1 of 4</div>
+        </div>
+        <div class="row">
+            <div class="col-3-of-4">col3 of 4</div>
+            <div class="col-1-of-4">col1 of 4</div>
+        </div>
     <!-- Main Footer -->
-    <footer >
-        <strong>Copyright © 2018 <a href="http://frequenza.ec" target="_blank">Frequenza</a>.</strong> All rights reserved.
+    <footer class="main-footer">
+        @include('layouts.footer')
     </footer>
     <!-- jQuery 3.1.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

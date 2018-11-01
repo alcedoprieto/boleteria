@@ -1,8 +1,26 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Hind');
 
-// Variables
-@import 'variables';
+// Abstracts
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+//Base & reset
+@import 'base/base';
+@import 'base/animations';
+@import 'base/typography';
+@import 'base/utilities';
 
 
+//Components
+@import 'components/buttons';
+
+//Layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/grid';
+
+//Pages
+@import 'pages/home';
