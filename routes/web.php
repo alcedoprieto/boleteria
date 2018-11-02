@@ -46,4 +46,4 @@ Route::post('eventos/boletos', [
 
 
 
-Route::resource('boletos', 'BoletoController')->middleware('auth', 'role:admin');
+Route::resource('boletos', 'boletoController')->middleware('auth', 'role:admin');

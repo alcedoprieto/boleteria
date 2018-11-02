@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateBoletoRequest;
 use App\Http\Requests\UpdateBoletoRequest;
-use App\Repositories\BoletoRepository;
+use App\Repositories\boletoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
