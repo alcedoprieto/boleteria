@@ -17,6 +17,7 @@
                                 <th>Valor</th>
                                 <th>Cantidad</th>
                                 <th>Vendidos</th>
+                                <th>$</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,10 @@
                                     @foreach ($tickets as $ticket)
                                         @if ( $boleto->id == $ticket['id'] )
                                             {{ $ticket['cantidad'] }}
+                                        </td>
+                                        <td>
+                                            {!! ($boleto->valor + $boleto->iva)*$ticket['cantidad'] !!}
+                                        </td>
                                         @endif
                                     @endforeach
                                 </td>
