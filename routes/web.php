@@ -51,4 +51,4 @@ Route::post('home/kushki', [
 */
 Route::resource('kushki','HomeController');
 
-Route::resource('boletos', 'BoletoController')->middleware('auth', 'role:admin');
+Route::resource('boletos', 'boletoController')->middleware('auth', 'role:admin');
