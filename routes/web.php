@@ -15,14 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::resource('valorboletos', 'valorboletoController')->middleware('auth');
 
@@ -51,6 +46,15 @@ Route::get('eventos/{evento}/boletos/create', [
 Route::post('eventos/boletos', [
     'as'=>'eventos.boletos.store',
     'uses' => 'boletoController@store'
-]);*/
+<<<<<<< HEAD
+]);*
+
+Route::post('home/kushki', [
+    'as'=>'kushki.pagos',
+    'uses' => 'HomeController@kushki'
+]);
+*/
+
+Route::resource('kushki','HomeController');
 
 Route::resource('boletos', 'boletoController')->middleware('auth', 'role:admin');
