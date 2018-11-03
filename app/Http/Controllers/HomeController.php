@@ -33,4 +33,9 @@ class HomeController extends Controller
         return view('home', ['boletos' => $boletos]);
 
     }
+
+    public function store(Request $request)
+    {
+        dd($request);
+    }
 }

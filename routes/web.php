@@ -42,8 +42,13 @@ Route::get('eventos/{evento}/boletos/create', [
 Route::post('eventos/boletos', [
     'as'=>'eventos.boletos.store',
     'uses' => 'boletoController@store'
-]);*/
+]);
 
-
+Route::post('home/kushki', [
+    'as'=>'kushki.pagos',
+    'uses' => 'HomeController@kushki'
+]);
+*/
+Route::resource('kushki','HomeController');
 
 Route::resource('boletos', 'BoletoController')->middleware('auth', 'role:admin');
