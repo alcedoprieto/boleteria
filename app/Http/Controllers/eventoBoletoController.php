@@ -41,7 +41,8 @@ class EventoBoletoController extends Controller
         foreach ($boletos as $boleto) {
             $bol = Boleto::find($boleto->id);
 
-            array_push($tickets, array('id'=>$boleto->id, 'cantidad'=>$bol->tickets()->get()->count()));
+            // array_push($tickets, array('id'=>$boleto->id, 'cantidad'=>$bol->tickets()->get()->count()));
+            array_push($tickets, array('id'=>$boleto->id, 'cantidad'=>$bol->tickets()->whereNotNull('idusuario')->get()->count()));
         }
 
         // $boleto = Boleto::find(4);
