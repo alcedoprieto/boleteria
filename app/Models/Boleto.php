@@ -72,8 +72,22 @@ class Boleto extends Model
     ];
 
     public function users()
-        {
-            return $this->belongsToMany('App\User');
-        }
+    {
+        return $this->belongsToMany('App\User');
+    }
     
+    // Relacion de Boleto con Evento
+    public function evento()
+    {
+        // 1 boleto pertenece a un Evento
+        // $this hace referencia al objeto que tenemos en ese momento de Boleto.
+        return $this->belongsTo('App\Models\Evento','id');
+    }
+
+    // Relacion de Boleto con Boleto_Users:
+    public function tickets()
+    {
+        // 1 boleto tiene muchos boleto_users
+        return $this->hasMany('App\BoletoUser', 'idboleto');
+    }
 }

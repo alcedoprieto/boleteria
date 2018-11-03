@@ -167,4 +167,5 @@ class EventoController extends AppBaseController
 
         return redirect(route('eventos.index'));
     }
+
 }

@@ -28,18 +28,18 @@
                         <li >
                             <p>
                                 {!! Auth::user()->name !!}
-                                <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>
+                                <small>Miembro desde {!! Auth::user()->created_at->format('M. Y') !!}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li>
                             <div>
-                                <a href="#">Profile</a>
+                                <a href="#">Perfil</a>
                             </div>
                             <div >
                                 <a href="{!! url('/logout') !!}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Sign out
+                                    Salir   
                                 </a>
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                                     style="display: none;">
