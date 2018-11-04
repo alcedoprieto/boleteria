@@ -45,8 +45,10 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
         <div class="cajita" id="cajita">
             <div class="pull-right align-top">
                 <a class="linkCerrar" id="linkCerrar" href="#" onclick="cerrarCajita()">Cerrar</a>
-                <form id="kushki-pay-form" action="{{route('kushki.store')}}" method="post">
+                <form id="kushki-pay-form" action="{{route('api.kushki')}}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="cart_id" value="123">
+                    <input id="idnombre" type="hidden" name="nombre" value="Nombre de Prueba">
                 </form>
             </div>
         </div>
