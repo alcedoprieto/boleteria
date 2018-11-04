@@ -73,15 +73,33 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
 
         function realizarPago(){
             $("input").prop('disabled', true);
-            var kushki = new KushkiCheckout({
-                form: "kushki-pay-form",
-                merchant_id: "10000002310042414718149002935532",
-                amount: $("#idcosto").val(),
-                currency: "USD", 
-                payment_methods:["credit-card"] ,
-                is_subscription: false,
-                inTestEnvironment: true
-            });
+
+        var parametros = {
+                "valorCaja1" : "valor 1",
+                "valorCaja2" : "valor 2"
+        };
+        $.ajax({
+                data:  parametros, //datos que se envian a traves de ajax
+                url:   '{{route('api.kushki')}}', //archivo que recibe la peticion
+                type:  'post', //método de envio
+                beforeSend: function () {
+                        $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                        console.log(response);
+                        var kushki = new KushkiCheckout({
+                            form: "kushki-pay-form",
+                            merchant_id: "10000002310042414718149002935532",
+                            amount: $("#idcosto").val(),
+                            currency: "USD", 
+                            payment_methods:["credit-card"] ,
+                            is_subscription: false,
+                            inTestEnvironment: true
+                        });
+                }
+        });
+
+
             $( "#linkCerrar" ).css("display","block");
         }
 

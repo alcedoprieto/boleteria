@@ -34,7 +34,19 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+    
+        if($request->valorCaja1){
+            session(['valorCaja1' => $request->valorCaja1]);
+            session(['valorCaja2' => $request->valorCaja2]);
+            return session()->all();
+               
+        }else{
+            session(['kushkiToken' => $request->kushkiToken]);
+            session(['kushkiPaymentMethod' => $request->kushkiPaymentMethod]);
+            dd(session()->all());
+        }
+        
+        
     }
 
     /**
