@@ -27,7 +27,8 @@ class BoletoRepository extends BaseRepository
         'fin',
         'idevento',
         'iduser',
-        'activo'
+        'activo',
+        'cantidad'
     ];
 
     /**

@@ -7,13 +7,14 @@
 <!-- Valor Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('valor', 'Valor:') !!}
-    {!! Form::number('valor', null, ['class' => 'form-control']) !!}
+    {!! Form::number('valor', null, ['class' => 'form-control', 'min' => '0']) !!}
 </div>
 
 <!-- Iva Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('iva', 'Iva:') !!}
-    {!! Form::number('iva', null, ['class' => 'form-control']) !!}
+    {!! Form::hidden('iva', false) !!}
+    {!! Form::checkbox('iva', '1', '0') !!} 
 </div>
 
 <!-- Inicio Field -->
@@ -29,15 +30,20 @@
 </div>
 <div class="form-group col-sm-6"> 
     {!! Form::label('evento', 'Evento:') !!}
-    {!! Form::select('size', $eventos, ['class' => 'form-control']) !!}
+    {!! Form::select('idevento', $eventos, ['class' => 'form-control']) !!}
 </div>
 <!-- Activo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('activo', 'Activo:') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('activo', false) !!}
-        {!! Form::checkbox('activo', '1', null) !!} 1
+        {!! Form::checkbox('activo', '1', '0') !!} 
     </label>
+</div>
+<!-- Valor Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Cantidad', 'Cantidad de Boletos a Generar') !!}
+    {!! Form::number('cantidad', null, ['class' => 'form-control', 'min' => '1']) !!}
 </div>
 
 <!-- Submit Field -->

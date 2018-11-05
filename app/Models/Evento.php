@@ -88,5 +88,11 @@ class Evento extends Model
         'ciudad' => 'required'
     ];
 
-    
+    // Relacion de Evento con Boletos:
+    public function boletos()
+    {
+        // 1 evento tiene muchos boletos
+        // $this hace referencia al objeto que tengamos instanciado en ese momento de Evento
+        return $this->hasMany('App\Models\Boleto', 'idevento');
+    }
 }

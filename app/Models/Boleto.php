@@ -37,7 +37,8 @@ class Boleto extends Model
         'fin',
         'idevento',
         'iduser',
-        'activo'
+        'activo',
+        'cantidad'
     ];
 
     /**
@@ -53,7 +54,8 @@ class Boleto extends Model
         'fin' => 'date',
         'idevento' => 'integer',
         'iduser' => 'integer',
-        'activo' => 'boolean'
+        'activo' => 'boolean',
+        'cantidad' => 'integer'
     ];
 
     /**
@@ -63,10 +65,29 @@ class Boleto extends Model
      */
     public static $rules = [
         'codigo' => 'required',
-        'valor' => 'required, numeric',
+        'valor' => 'required', 'numeric',
         'iva' => 'numeric',
-        'idevento' => 'required'
+        'idevento' => 'required',
+        'cantidad' => 'required', 'numeric'
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
     
+    // Relacion de Boleto con Evento
+    public function evento()
+    {
+        // 1 boleto pertenece a un Evento
+        // $this hace referencia al objeto que tenemos en ese momento de Boleto.
+        return $this->belongsTo('App\Models\Evento','id');
+    }
+
+    // Relacion de Boleto con Boleto_Users:
+    public function tickets()
+    {
+        // 1 boleto tiene muchos boleto_users
+        return $this->hasMany('App\BoletoUser', 'idboleto');
+    }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css?family=Hind");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -342,4 +343,13 @@ table {
         color: #E9F0E5;
         padding: 3rem 2rem 0rem 2rem; }
 
+=======
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+.linkCerrar{
+	display: none;
+}
+.cajita{
+	width: 500px;
+}
+>>>>>>> 6a36285434e61f49fee3abce7ddc73c39719263b
 /*# sourceMappingURL=app.css.map */

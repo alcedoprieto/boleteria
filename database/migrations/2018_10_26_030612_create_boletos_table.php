@@ -21,12 +21,11 @@ class CreateBoletosTable extends Migration
             $table->date('inicio')->nullable();
             $table->date('fin')->nullable();
             $table->integer('idevento')->unsigned();
-            $table->integer('iduser')->unsigned()->nullable();
+            $table->integer('cantidad')->unsigned();
             $table->boolean('activo');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('idevento')->references('id')->on('eventos');
-            $table->foreign('iduser')->references('id')->on('users');
         });
     }
 

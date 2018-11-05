@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateBoletoRequest;
 use App\Http\Requests\UpdateBoletoRequest;
-use App\Repositories\BoletoRepository;
+use App\Repositories\boletoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Illuminate\Support\Facades\DB;
+use App\BoletoUser;
 
 class BoletoController extends AppBaseController
 {
@@ -58,8 +59,22 @@ class BoletoController extends AppBaseController
     public function store(CreateBoletoRequest $request)
     {
         $input = $request->all();
+        if ($input["activo"] != 1) $input["activo"] = 0;
 
+        if ($input["iva"] == 1) { $input["iva"] = $input["valor"] * 0.12; } else { $input["iva"] = 0; }
+  
         $boleto = $this->boletoRepository->create($input);
+
+        $cant = $boleto->cantidad;
+ 
+        for ($i = 1; $i <= $cant; $i++){
+            BoletoUser::create([
+                'codigo' => $boleto->codigo.$i,
+                'idboleto' => $boleto->id
+            ]);
+            
+        }
+
 
         Flash::success('Boleto saved successfully.');
 

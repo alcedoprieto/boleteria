@@ -2,25 +2,25 @@
     <thead>
         <tr>
             <th>Nombre</th>
-        <th>Logo</th>
-        <th>Lugar</th>
-        <th>Descripcion</th>
-        <th>Website</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Mobile</th>
-        <th>Email</th>
-        <th>Latitud</th>
-        <th>Longitud</th>
-        <th>Ciudad</th>
-        <th>Poster</th>
+            <th>Logo</th>
+            <th>Lugar</th>
+            <th>Descripcion</th>
+            <th>Website</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Ciudad</th>
+            <th>Poster</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
     <tbody>
     @foreach($eventos as $evento)
         <tr>
-            <td>{!! $evento->nombre !!}</td>
+            <td><a href="{!! route('eventos.boletos.index', $evento->id) !!}"><span>{!! $evento->nombre !!}</span></a></td>
             <td><img src="{!! $evento->logo !!}" class="logoEvento"></td>
             <td>{!! $evento->lugar !!}</td>
             <td>{!! $evento->descripcion !!}</td>
