@@ -1,24 +1,27 @@
-<nav role="navigation">
-    <a href="#" class="logo">
-        <b>Frequenza</b>
-    </a>
-    <div>
-        <ul>
+<nav class="nav row" role="navigation">
+    <div class="nav_logo-container col-1-of-4">
+        <a href="#" class="nav_logo-container_logo"><img src="img/logoFrequenza.png" alt=""></a>
+    </div>
+    <div class="nav_container col-3-of-4">
+        <ul class="nav_container-list">
             @auth
             @include('layouts.infoUser')
             @endauth
             <!-- User Account Menu -->
             @guest
-            <li >
+
+            <li class="nav_container-list-item">
                 <a  href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
-            <li >
+            <li class="nav_container-list-item">
                 @if (Route::has('register'))
                 <a href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif
             </li>
+            <li class="nav_container-list-item"><a href="{{ route('home') }}">Eventos</a></li>
+            <li class="nav_container-list-item"><a href="{{ route('home') }}">Inicio</a></li>
             @else
-            <li >
+            <li class="nav_container-list-item">
                 <!-- Menu Toggle Button -->
                 <a href="#" data-toggle="dropdown">
                     <!-- The user image in the navbar-->
@@ -27,7 +30,7 @@
                 </a>
                 <ul >
                     <!-- The user image in the menu -->
-                    <li >
+                    <li>
                         <p>
                             {!! Auth::user()->name !!}
                             <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>

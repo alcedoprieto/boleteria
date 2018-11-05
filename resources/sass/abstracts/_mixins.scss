@@ -1,16 +1,100 @@
-
-
-@mixin Bfont{
-font-family: 'Hind', sans-serif;
-font-size: 0.9rem;
-line-height: 1.6;
+//------ font -----//
+@mixin Mainfont {
+    font-family: $font-fam-style;
+    font-size: $font-base-size;
+    line-height: $font-base-line-height;
+    color: $cream;
 }
 
+@mixin Navfont {
+    font-family: $font-fam-style;
+    font-size: $font-base-size;
+    line-height: $font-base-line-height;
+    color: $cream;
+    margin-left: $nav-left-margin;
+}
 
-@mixin clearfix{
-	&:after{
-		content: "";
-		display: table;
-		clear:both;
-	}
+@mixin Titlefont {
+    font-family: $font-fam-style;
+    font-size: $font-size-h1;
+    line-height: $font-base-line-height;
+    color: $cream;
+    text-align: center;
+}
+@mixin Subtitlefont {
+    font-family: $font-fam-style;
+    font-size: $font-size-h2;
+    line-height: $font-base-line-height2;
+    color: $cream;
+    
+}
+@mixin Parafont {
+    font-family: $font-fam-style;
+    font-size: $font-size-p;
+    line-height: $font-base-line-height2;
+    color: $cream;
+    
+}
+
+//------ Clearfix -----//
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+//------ Imgs -----//
+
+@mixin logo1 {
+    display: inline-block;
+    width: 100%;
+    max-width: 19rem;
+    height: auto;
+}
+
+@mixin bg {
+    background: $background;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center; 
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    height: 100vh;
+}
+@mixin newsimg {
+  
+    width: 100%;
+    max-width: 58rem;
+    height: auto;
+    margin: 0rem auto ;
+
+}
+@mixin eventsimg {
+  
+    width: 100%;
+    max-width: 25.4rem;
+    height: auto;
+    margin: 0rem auto ;
+
+} 
+
+@mixin isologo{
+	width: 100%;
+    max-width: 19rem;
+    height: auto;
+    margin: 0rem auto ;
+}
+
+//gradients
+
+@mixin bluegradient {
+    background: rgb(14, 55, 87);
+    background: linear-gradient(212deg, rgba(14, 55, 87, 0) 0%, rgba(14, 55, 87, 1) 52%, rgba(14, 55, 87, 1) 100%);
 }

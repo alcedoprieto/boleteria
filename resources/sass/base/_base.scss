@@ -15,13 +15,21 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video,header {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 62.5%;
+	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	text-decoration: none;
+	list-style: none;
+}
+
+html, body{
+	font-size: 62.5%;
+	text-decoration: none;
+	list-style: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -33,6 +41,9 @@ body {
 }
 ol, ul {
 	list-style: none;
+}
+a {
+    text-decoration: none;
 }
 a:link {
     text-decoration: none;

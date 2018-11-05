@@ -19,5 +19,7 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 
+.sass-cache/2f88ca80d64fabe937aeec71db2fe26461801be1/app.scssc
+
 
 # End of https://www.gitignore.io/api/laravel
