@@ -15,10 +15,6 @@
         <div>
             <!-- Main Header -->
             <header >
-                <!-- Logo -->
-                <a href="#" class="logo">
-                    <b>Frequenza</b>
-                </a>
                 <!-- Header Navbar -->
                 @include('layouts.navbar')
             </header>
