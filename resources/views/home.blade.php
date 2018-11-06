@@ -1,22 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-<section class="content-header">
-    <h1 class="pull-center">Bienvenido</h1>
-</section>
-<div class="content">
-    <div class="clearfix"></div>
-    @include('flash::message')
-    <div class="clearfix"></div>
-    <div class="box box-primary">
-        <div class="box-body">
-        </div>
-    </div>
-    <div class="text-center">
-        
-    </div>
-</div>
-=======
     <section class="content-header">
         <h1 class="pull-center">Bienvenido</h1>
 
@@ -126,5 +109,4 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
             $("input").prop('disabled', false);
         }
     </script>
->>>>>>> 6a36285434e61f49fee3abce7ddc73c39719263b
 @endsection

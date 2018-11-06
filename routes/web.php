@@ -21,7 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('valorboletos', 'valorboletoController')->middleware('auth');
 
-Route::resource('eventos', 'eventoController')->middleware('auth', 'role:admin');
+//Route::resource('eventos', 'eventoController')->middleware('auth', 'role:admin');
+
+// Agregando seguridad por Roles
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::resource('eventos', 'eventoController');
+});
 
 Route::resource('eventos.boletos', 'eventoBoletoController', [ 'only'=>['index'] ])->middleware('auth');
 
