@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateBoletoRequest;
 use App\Repositories\boletoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+
+use Auth;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
