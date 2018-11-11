@@ -1,18 +1,23 @@
-        $( document ).ready(function() {
-            var tok;
 
-            var callback = function(response) {
-                tok = response.token;
-                  if(!response.code){
-                    console.log(response.token);
-                  } else {
-                    console.error('Error: ',response.error, 'Code: ', response.code, 'Message: ',response.message);
-                  }
-                }
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
 
-            var kushki = new Kushki({
-                merchantId: "10000002310042414718149002935532", 
-                inTestEnvironment: true
-            });
+require('./bootstrap');
 
-        });
+window.Vue = require('vue');
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+const app = new Vue({
+    el: '#app'
+});
+
