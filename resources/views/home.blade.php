@@ -103,23 +103,6 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
             $("input").prop('disabled', false);
         }
 
-        var tok;
-        function instaciarKushki(){
-            var callback = function(response) {
-                tok = response.token;
-                  if(!response.code){
-                    console.log(response.token);
-                  } else {
-                    console.error('Error: ',response.error, 'Code: ', response.code, 'Message: ',response.message);
-                  }
-                }
-        var kushki = new Kushki({
-            merchantId: "10000002310042414718149002935532", 
-            inTestEnvironment: true
-        });
-
-        }
-
         function solicitarToken(){
             kushki.requestToken({
               amount: '100',
@@ -134,5 +117,24 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
                 }
             }, callback);
         }
+
+        $( document ).ready(function() {
+            var tok;
+
+            var callback = function(response) {
+                tok = response.token;
+                  if(!response.code){
+                    console.log(response.token);
+                  } else {
+                    console.error('Error: ',response.error, 'Code: ', response.code, 'Message: ',response.message);
+                  }
+                }
+
+            var kushki = new Kushki({
+                merchantId: "10000002310042414718149002935532", 
+                inTestEnvironment: true
+            });
+
+        });
     </script>
 @endsection
