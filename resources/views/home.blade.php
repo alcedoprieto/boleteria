@@ -78,6 +78,8 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
                 "valorCaja1" : "valor 1",
                 "valorCaja2" : "valor 2"
         };
+        
+
         $.ajax({
                 data:  parametros, //datos que se envian a traves de ajax
                 url:   '{{route('api.kushki')}}', //archivo que recibe la peticion
@@ -87,15 +89,7 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
                 },
                 success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
                         console.log(response);
-                        var kushki = new KushkiCheckout({
-                            form: "kushki-pay-form",
-                            merchant_id: "10000002310042414718149002935532",
-                            amount: $("#idcosto").val(),
-                            currency: "USD", 
-                            payment_methods:["credit-card"] ,
-                            is_subscription: false,
-                            inTestEnvironment: true
-                        });
+
                 }
         });
 
@@ -107,6 +101,38 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
             $( "#kushki-pay-form" ).empty();
             $( "#linkCerrar" ).css("display","none");
             $("input").prop('disabled', false);
+        }
+
+        var tok;
+        function instaciarKushki(){
+            var callback = function(response) {
+                tok = response.token;
+                  if(!response.code){
+                    console.log(response.token);
+                  } else {
+                    console.error('Error: ',response.error, 'Code: ', response.code, 'Message: ',response.message);
+                  }
+                }
+        var kushki = new Kushki({
+            merchantId: "10000002310042414718149002935532", 
+            inTestEnvironment: true
+        });
+
+        }
+
+        function solicitarToken(){
+            kushki.requestToken({
+              amount: '100',
+              isDeferred: false,
+              currency: "USD",
+              card: {
+                    name: "Juan Guerra",
+                    number: "4544980425511225",
+                    cvc: "345",
+                    expiryMonth: "12",
+                    expiryYear: "28"
+                }
+            }, callback);
         }
     </script>
 @endsection

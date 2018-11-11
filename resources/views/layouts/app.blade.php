@@ -9,7 +9,7 @@
         @yield('css')
         <!-- jQuery 3.1.1 -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdn.kushkipagos.com/kushki-checkout.js"></script>
+        <script src="https://cdn.kushkipagos.com/kushki.min.js"></script>
     </head>
     <body>
         <div>
