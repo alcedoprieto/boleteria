@@ -27,6 +27,8 @@
                 @include('layouts.footer')
             </footer>
         </div>
+        <!-- Scripts Personales -->
+        <script src="{{ asset('js/app.js') }}"></script>
         @yield('scripts')
     </body>
 </html>
