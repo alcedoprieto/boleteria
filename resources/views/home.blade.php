@@ -33,7 +33,7 @@
                     <td>{!! $boleto->fin !!}</td>
                     <td>{!! $boleto->nombre !!}</td>
                     <td>{!! $boleto->cantidad !!}</td>
-                   <td>Cantidad: <input id="cant{!! $boleto->codigo !!}" type="number" name="cantidad" min="1" onclick="modalBoletos('{!! $boleto->codigo !!}',{!! $boleto->valor + $boleto->iva !!})"></td>
+                   <td>Cantidad: <input id="cant{!! $boleto->codigo !!}" type="number" name="cantidad" min="0" onclick="modalBoletos('{!! $boleto->codigo !!}',{!! $boleto->valor + $boleto->iva !!})"></td>
                     <td>
                     </td>
                 </tr>
@@ -41,15 +41,74 @@
             </tbody>
         </table>
 Costo: <input id="idcosto" type="text" name="costo"><br>
-                  <input type="submit" value="Comprar" onclick="realizarPago()">
+                  <input type="submit" value="Comprar" onclick="realizarPago()"> <div id="resultado"> </div>
         <div class="cajita" id="cajita">
             <div class="pull-right align-top">
                 <a class="linkCerrar" id="linkCerrar" href="#" onclick="cerrarCajita()">Cerrar</a>
-                <form id="kushki-pay-form" action="{{route('api.kushki')}}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="cart_id" value="123">
-                    <input id="idnombre" type="hidden" name="nombre" value="Nombre de Prueba">
-                </form>
+               <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="elemento panel panel-default credit-card-box" >
+            
+                <div class="panel-body" style="padding-left: 5%;padding-right: 5%">
+                    <form role="form" id="payment-form" method="POST" action="">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">Nombre y Apellido</label>
+                                    <div class="input-group">
+
+                                        <input type="text"  name="cardName" id="cardName" placeholder="Nombre y Apellido" autocomplete="off" required autofocus/>
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                 
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">Número de Tarjeta</label>
+                                    <div class="input-group">
+                                        <input type="tel" class="form-control" name="cardNumber" id="cardNumber" placeholder="Número de Tarjeta Válido" autocomplete="off" required />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="cardExpiry">Fecha de Expiración</label>
+                                    <input type="number"  name="cardExpiryMM" id="cardExpiryMM" placeholder="MM" autocomplete="off" maxlength="2" required/>
+                                     <input type="number"  name="cardExpiryYY" id="cardExpiryYY" placeholder="YY" autocomplete="off" maxlength="2" required/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">Código CVC</label>
+                                    <input type="password" class="form-control" name="cardCVC" id="cardCVC" placeholder="Código Seguridad" autocomplete="off" maxlength="4" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="subscribe btn btn-info btn-lg btn-block" type="button" onclick="solicitarToken();">Pagar</button>
+                            </div>
+                        </div>
+                  
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                        <?php flash('example_message'); ?>
+                    </form>
+                </div>
+            </div>
+            <!-- CREDIT CARD FORM ENDS HERE -->
+
             </div>
         </div>
 
@@ -72,29 +131,9 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
             }
 
         function realizarPago(){
-            $("input").prop('disabled', true);
-
-        var parametros = {
-                "valorCaja1" : "valor 1",
-                "valorCaja2" : "valor 2"
-        };
-        
-
-        $.ajax({
-                data:  parametros, //datos que se envian a traves de ajax
-                url:   '{{route('api.kushki')}}', //archivo que recibe la peticion
-                type:  'post', //método de envio
-                beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
-                },
-                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                        console.log(response);
-
-                }
-        });
-
-
+            $("[name='cantidad']").prop('disabled', true);
             $( "#linkCerrar" ).css("display","block");
+            $( "#cajita" ).css("display","block");
         }
 
         function cerrarCajita() {
@@ -104,23 +143,40 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
         }
 
         function solicitarToken(){
+            $( "#cajita" ).css("display","none");
+            $("#resultado").html("Procesando, espere por favor...");
             kushki.requestToken({
               amount: '100',
               isDeferred: false,
               currency: "USD",
               card: {
-                    name: "Juan Guerra",
-                    number: "4544980425511225",
-                    cvc: "345",
-                    expiryMonth: "12",
-                    expiryYear: "28"
+                    name: $("#cardName").val(),
+                    number: $("#cardNumber").val(),
+                    cvc: $("#cardCVC").val(),
+                    expiryMonth: $("#cardExpiryMM").val(),
+                    expiryYear: $("#cardExpiryYY").val()
                 }
             }, callback);
         }
     var callback = function(response) {
         tok = response.token;
           if(!response.code){
-            console.log(response.token);
+                var parametros = {
+                    "kushkiToken" : tok,
+                    "monto" : tmp.toFixed(2),
+                };
+                $.ajax({
+                        data:  parametros, //datos que se envian a traves de ajax
+                        url:   '{{route('api.kushki')}}', //archivo que recibe la peticion
+                        type:  'post', //método de envio
+                        beforeSend: function () {
+                                $("#resultado").html("Procesando, espere por favor...");
+                        },
+                        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                                console.log(response);
+
+                        }
+                });
           } else {
             console.error('Error: ',response.error, 'Code: ', response.code, 'Message: ',response.message);
           }
