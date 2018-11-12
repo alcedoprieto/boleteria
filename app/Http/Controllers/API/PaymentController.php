@@ -34,7 +34,8 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-    
+    return $request->all();
+
         if($request->valorCaja1){
             session(['valorCaja1' => $request->valorCaja1]);
             session(['valorCaja2' => $request->valorCaja2]);

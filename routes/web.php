@@ -25,7 +25,7 @@ Route::resource('valorboletos', 'valorboletoController')->middleware('auth');
 
 // Agregando seguridad por Roles
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::resource('eventos', 'eventoController');
+    Route::resource('eventos', 'EventoController');
 });
 
 Route::resource('eventos.boletos', 'eventoBoletoController', [ 'only'=>['index'] ])->middleware('auth');
