@@ -33,7 +33,7 @@
                     <td>{!! $boleto->fin !!}</td>
                     <td>{!! $boleto->nombre !!}</td>
                     <td>{!! $boleto->cantidad !!}</td>
-                   <td>Cantidad: <input id="cant{!! $boleto->codigo !!}" type="number" name="cantidad" min="0" onclick="modalBoletos('{!! $boleto->codigo !!}',{!! $boleto->valor + $boleto->iva !!})"></td>
+                   <td>Cantidad: <input id="{!! $boleto->codigo !!}" type="number" name="cantidad" min="0" onclick="modalBoletos()"></td>
                     <td>
                     </td>
                 </tr>
@@ -120,9 +120,7 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
     </div>
 
     <script>
-        function modalBoletos(Codigo,Valor) {
-            console.log(Codigo +" - "+Valor);
-            console.log(document.getElementById("cant"+Codigo).value);
+        function modalBoletos() {
             tmp = 0;
             for (i = 0; i < $("[name='cantidad']").length; i++) {
                 tmp = tmp + $("[name='cantidad']")[i].value * $("[name='valor']")[i].innerHTML;
@@ -164,7 +162,12 @@ Costo: <input id="idcosto" type="text" name="costo"><br>
                 var parametros = {
                     "kushkiToken" : tok,
                     "monto" : tmp.toFixed(2),
+                    "boletos":[],
+                    "articulos":[]
                 };
+                for (i = 0; i < $("[name='cantidad']").length; i++) {
+                        parametros.boletos.push({ codigo: $("[name='cantidad']")[i].id, cantidad: $("[name='cantidad']")[i].value });
+                }
                 $.ajax({
                         data:  parametros, //datos que se envian a traves de ajax
                         url:   '{{route('api.kushki')}}', //archivo que recibe la peticion
